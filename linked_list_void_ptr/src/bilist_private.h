@@ -1,30 +1,26 @@
 /** \file list.h
- @brief Двухсвязный список допускающих хранение пользовательских структур данных
-
-    По функционалу приближается, насколько это возможно к std::list, но написан на чистом С.
-    Статистическая типизация, отсутвует как класс данные храняться в виде void* 
-
-    @authors Boris Rozhkin borisrozhkin@gmail.com
-
-    @bug
+ @brief Приватные вещи двухсвязного списка
 */
+
+#include <stdio.h>	//for size_t
 
 #ifndef TYPICAL_BI_LIST_PRIVATE
 #define TYPICAL_BI_LIST_PRIVATE
-typedef unsigned size_t; 
-typedef struct list_node_
+
+typedef struct bilist_node_
 {
     void * data;
-    list_node *prev;
-    list_node *next;
-} list_node;
+    bilist_node *prev;
+    bilist_node *next;
+} bilist_node;
 
-typedef struct list_
+typedef struct bilist_
 {
     size_t size;
-    list_node *head;
-    list_node *tail;
-} list;
+    size_t data_size;
+    bilist_node *head;
+    bilist_node *tail;
+} bilist;
 
 
-#endif //TYPICAL_BI_LIST
+#endif //TYPICAL_BI_LIST_PRIVATE
