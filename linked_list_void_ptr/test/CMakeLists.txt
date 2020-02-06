@@ -1,0 +1,5 @@
+include_directories ("${PROJECT_SOURCE_DIR}/src")
+add_executable(test_bilist test_bilist.c)
+add_dependencies(test_bilist test_bilist)
+add_test(test_bilist test_bilist)
+target_link_libraries(test_bilist bilist cmocka)

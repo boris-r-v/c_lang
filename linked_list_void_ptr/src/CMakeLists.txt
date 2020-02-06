@@ -1,0 +1,1 @@
+add_library(bilist bilist.c)
