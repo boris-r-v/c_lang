@@ -94,8 +94,30 @@ void test_bilist_loop_over(void **state)
 
     bilist *list = bilist_create2( arr, 10, sizeof(int) );
 
+    bilist_iterator b;
+    
+    int i;
+    for (b = bilist_begin( list ), i = 0; b != bilist_end( list ); b = bilist_next( b ), ++i )
+    {
+	assert_int_equal( i, *(int*)bilist_dereference( b ) );
+    }
 
-    assert_int_equal( 11, bilist_size( list ) );
+    for (b = bilist_rbegin( list ), i = 9; b != bilist_rend( list ); b = bilist_prev( b ), --i )
+    {
+	assert_int_equal( i, *(int*)bilist_dereference( b ) );
+    }
+
+    bilist_delete( list );
+}
+
+void test_bilist_front_back(void **state)
+{
+    (void) state; /* unused */
+
+    bilist *list = bilist_create2( arr, 10, sizeof(int) );
+
+    assert_int_equal( 0, *(int*)bilist_dereference( bilist_front( list ) ) );
+    assert_int_equal( 9, *(int*)bilist_dereference( bilist_back( list ) ) );
 
     bilist_delete( list );
 }
@@ -108,6 +130,8 @@ int main(void)
 	cmocka_unit_test(test_bilist_push_pop_front),
 	cmocka_unit_test(test_bilist_push_pop_back),
 	cmocka_unit_test(test_bilist_insert),
+	cmocka_unit_test(test_bilist_loop_over),
+	cmocka_unit_test(test_bilist_front_back),
     };
     return cmocka_run_group_tests( test, NULL, NULL);
 

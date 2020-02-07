@@ -8,7 +8,7 @@ void bilist_int_print( bilist* list )
     
     for ( ; b != bilist_end( list ); b = bilist_next( b ) )
     {
-	printf ( "%d ", *(int*)bilist_get( b ) );
+	printf ( "%d ", *(int*)bilist_dereference( b ) );
     }
 	printf ( "\n" );
 

@@ -137,7 +137,7 @@ bilist_iterator bilist_prev( bilist_iterator it )
 {
     return it->prev;	
 }
-void* bilist_get( bilist_iterator iterator )
+void* bilist_dereference( bilist_iterator iterator )
 {
     return iterator->data;
 }
@@ -170,6 +170,15 @@ void* bilist_at ( bilist* list, size_t index )
     if ( it )
 	return it->data;
     return NULL;
+}
+
+void* bilist_front( bilist const* list )
+{
+    return list->head;
+}
+void* bilist_back( bilist const* list )
+{
+    return list->tail;
 }
 
 
