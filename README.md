@@ -1,6 +1,6 @@
 c_lang
 ======
 
-qfind - ...
+qfind - поиск в массиве
 
-linked_list - ...
+linked_list - двухсвязные списки
